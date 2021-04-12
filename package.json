@@ -1,0 +1,26 @@
+{
+  "name": "order-restapi-practice",
+  "version": "1.0.0",
+  "description": "A REST api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhruvinfo28/node-order-restapi-pracitce.git"
+  },
+  "author": "Dhruv Panwar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhruvinfo28/node-order-restapi-pracitce/issues"
+  },
+  "homepage": "https://github.com/dhruvinfo28/node-order-restapi-pracitce#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

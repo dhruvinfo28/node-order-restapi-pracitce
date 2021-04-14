@@ -1,11 +1,18 @@
 const express = require('express')
 const morgan = require('morgan')
+
+
 const productRoutes = require('./api/routes/products')
 const orderRoutes = require('./api/routes/orders')
 
 const app = express();
 
+
+
 app.use(morgan('dev'));
+//First default logging should be done
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
 
 
 app.use('/products', productRoutes);

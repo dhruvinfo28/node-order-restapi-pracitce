@@ -9,9 +9,10 @@ const orderRoutes = require('./api/routes/orders')
 const app = express();
 
 mongoose.connect(`mongodb+srv://${process.env.DBUSERNAME}:${process.env.PASSWORD}@cluster0.mlz8u.mongodb.net/shopDB?retryWrites=true&w=majority`,{useNewUrlParser:true})
+    .then(result=>{
+        console.log('sab sahi hai')
+    })
     .catch(err=>{
-        console.log(process.env.DBUSERNAME)
-        console.log(process.env.PASSWORD)
         console.log(err)
     })
 

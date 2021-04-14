@@ -14,7 +14,31 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
+//Enabling CORS(Cross-Origin-Resource-Sharing)
+//https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS Reading resource:
+app.use((req,res,next)=>{
+    //This middleware doesnt send any response but attaches the required headers to every response 
+    res.header('Access-Control-Allow-Origin','*');
+    res.header('Access-Control-Allow-Headers',
+    'Origin,X-Requested-With,Content-Type,Accept,Authorization');
 
+
+    //This is basically a request the browser sends to the server before every request, seeking what all requests methods are allowed 
+    //in return we (the server) sends a header allowing the methods 
+    if(req.method == 'OPTIONS'){
+        res.header('Access-Control-Allow-Methods', 'PUT,POST,PATCH,DELETE,GET');
+            return res.status(200).json({});
+    }
+
+
+    //After we add the required response headers , we call the next middleware in the request response cycle
+    next();
+
+    //Note: Access-Control-Allow-Origin and Headers are set every time, and Methods is only set for an OPTIONS request
+})
+
+
+//Parsing of the request body should be done before we handle /products and /orders requests
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
 

@@ -1,13 +1,19 @@
+require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
-
+const mongoose = require('mongoose')
 
 const productRoutes = require('./api/routes/products')
 const orderRoutes = require('./api/routes/orders')
 
 const app = express();
 
-
+mongoose.connect(`mongodb+srv://${process.env.DBUSERNAME}:${process.env.PASSWORD}@cluster0.mlz8u.mongodb.net/shopDB?retryWrites=true&w=majority`,{useNewUrlParser:true})
+    .catch(err=>{
+        console.log(process.env.DBUSERNAME)
+        console.log(process.env.PASSWORD)
+        console.log(err)
+    })
 
 app.use(morgan('dev'));
 //First default logging should be done
